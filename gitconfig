@@ -1,0 +1,56 @@
+[core]
+	symlinks = false
+	autocrlf = false
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = true
+[pack]
+	packSizeLimit = 2g
+[help]
+	format = html
+[http]
+	sslCAinfo = /bin/curl-ca-bundle.crt
+[sendemail]
+	smtpserver = /bin/msmtp.exe
+
+[diff "astextplain"]
+	textconv = astextplain
+[rebase]
+	autosquash = true
+[alias]
+ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+last = log --pretty=format:"%C(yellow)%h%x09%Creset%an%x09%x09%s" --decorate -10
+graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --all
+graph2 = log --graph --all --format=format:'%C(bold yellow)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold white)- %an%C(reset)' --abbrev-commit
+alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
+filelog = log -u
+fl = log -u
+dlc = diff --cached HEAD^
+dr  = "!f() { git diff "$1"^.."$1"; }; f"
+lc  = "!f() { git ll "$1"^.."$1"; }; f"
+diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+f = "!git ls-files | grep -i"
+grep = grep -Ii
+gr = grep -Ii
+cp = cherry-pick
+st = status -s
+cl = clone
+ci = commit
+co = checkout
+br = branch 
+diff = diff --word-diff
+dc = diff --cached
+r = reset
+r1 = reset HEAD^
+r2 = reset HEAD^^
+rh = reset --hard
+rh1 = reset HEAD^ --hard
+rh2 = reset HEAD^^ --hard
+sl = stash list
+sa = stash apply
+ss = stash save
